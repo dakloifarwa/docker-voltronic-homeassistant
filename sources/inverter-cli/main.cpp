@@ -161,6 +161,7 @@ float batt_redischarge_voltage;
     // Get command flag settings from the arguments (if any)
     InputParser cmdArgs(argc, argv);
     const string &rawcmd = cmdArgs.getCmdOption("-r");
+    const string &settings_file = cmdArgs.getCmdOption("-c");
     if(cmdArgs.cmdOptionExists("-h") || cmdArgs.cmdOptionExists("--help")) {
         return print_help();
     }
@@ -174,10 +175,21 @@ float batt_redischarge_voltage;
     const char *settings;
 
     // Get the rest of the settings from the conf file
-    if( access( "./inverter.conf", F_OK ) != -1 ) { // file exists
-        settings = "./inverter.conf";
-    } else { // file doesn't exist
-        settings = "/etc/inverter/inverter.conf";
+    if (!settings_file.empty()) {
+        const char* psettings = settings_file.c_str();
+        if ( access( psettings, F_OK ) != -1 ) { // file exists
+            settings = psettings;
+        }
+    }
+    else {
+          if( access( "./inverter.conf", F_OK ) != -1 ) { // default file exists
+              settings = "./inverter.conf";
+          } else { // default file doesn't exist, searching further
+              settings = "/etc/inverter/inverter.conf";
+          }
+    }
+    if (debugFlag) {
+         printf("config file is %s\n", settings);
     }
     getSettingsFile(settings);
     int fd = open(settings, O_RDWR);
@@ -300,6 +312,16 @@ float batt_redischarge_voltage;
                         &pv2_input_voltage,          // * PV2 Input voltage
                         &pv2_charging_power          // * PV2 Charging power
                         );
+                }
+                else {
+                    pv2_input_current = 0;           // * PV2 Input current
+                    pv2_input_voltage = 0;           // * PV2 Input voltage
+                    pv2_charging_power = 0;          // * PV2 Charging power
+                }
+                if (debugFlag) {
+                    printf("INVERTER: pv2_input_current is %.2f\n", pv2_input_current);
+                    printf("INVERTER: pv2_input_voltage is %.2f\n", pv2_input_voltage);
+                    printf("INVERTER: pv2_charging_power is %d\n", pv2_charging_power);
                 }
 
                 pv_total_charging_power = pv_charging_power + pv2_charging_power;

@@ -52,6 +52,7 @@ int print_help() {
 
     printf("SUPPORTED ARGUMENTS:\n");
     printf("          -r <raw-command>      TX 'raw' command to the inverter\n");
+    printf("          -c <config file>      optional path to config file\n");
     printf("          -h | --help           This Help Message\n");
     printf("          -1 | --run-once       Runs one iteration on the inverter, and then exits\n");
     printf("          -d                    Additional debugging\n\n");

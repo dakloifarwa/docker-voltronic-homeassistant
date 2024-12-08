@@ -429,7 +429,7 @@ float batt_redischarge_voltage;
                 printf("  \"Warning_MPPT_overload_warning\":\"%c\",\n", warnings->c_str()[28]);     //
                 printf("  \"Warning_Battery_too_low_to_charge\":\"%c\",\n", warnings->c_str()[29]);     //
                 printf("  \"Warning_Reserved_a30\":\"%c\",\n", warnings->c_str()[30]);     //
-                printf("  \"Warning_Reserved_a31\":\"%c\",\n", warnings->c_str()[31]);     //
+                printf("  \"Warning_Reserved_a31\":\"%c\"\n", warnings->c_str()[31]);     //
                 printf("}\n");
 
                 // Delete reply string so we can update with new data when polled again...

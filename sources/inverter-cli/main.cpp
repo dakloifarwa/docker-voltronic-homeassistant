@@ -396,7 +396,40 @@ float batt_redischarge_voltage;
                     printf("  \"PV2_charging_power\":%d,\n", pv2_charging_power); // QPIGS2
                 }
                 printf("  \"PV_total_charging_power\":%d,\n", pv_total_charging_power);
-                printf("  \"Warnings\":\"%s\"\n", warnings->c_str());     //
+
+                printf("  \"Warnings\":\"%s\",\n", warnings->c_str());     //
+                printf("  \"Warning_Reserved_a0\":\"%c\",\n", warnings->c_str()[0]);     //
+                printf("  \"Warning_Inverter_fault\":\"%c\",\n", warnings->c_str()[1]);     //
+                printf("  \"Warning_Bus_Over\":\"%c\",\n", warnings->c_str()[2]);     //
+                printf("  \"Warning_Bus_Under\":\"%c\",\n", warnings->c_str()[3]);     //
+                printf("  \"Warning_Bus_Soft_Fail\":\"%c\",\n", warnings->c_str()[4]);     //
+                printf("  \"Warning_LINE_FAIL\":\"%c\",\n", warnings->c_str()[5]);     //
+                printf("  \"Warning_OPVShort\":\"%c\",\n", warnings->c_str()[6]);     //
+                printf("  \"Warning_Inverter_voltage_too_low\":\"%c\",\n", warnings->c_str()[7]);     //
+                printf("  \"Warning_Inverter_voltage_too_high\":\"%c\",\n", warnings->c_str()[8]);     //
+                printf("  \"Warning_Over_temperature\":\"%c\",\n", warnings->c_str()[9]);     //
+                printf("  \"Warning_Fan_locked\":\"%c\",\n", warnings->c_str()[10]);     //
+                printf("  \"Warning_Battery_voltage_high\":\"%c\",\n", warnings->c_str()[11]);     //
+                printf("  \"Warning_Battery_low_alarm\":\"%c\",\n", warnings->c_str()[12]);     //
+                printf("  \"Warning_Reserved_a13\":\"%c\",\n", warnings->c_str()[13]);     //
+                printf("  \"Warning_Battery_under_shutdown\":\"%c\",\n", warnings->c_str()[14]);     //
+                printf("  \"Warning_Reserved_a15\":\"%c\",\n", warnings->c_str()[15]);     //
+                printf("  \"Warning_Over_load\":\"%c\",\n", warnings->c_str()[16]);     //
+                printf("  \"Warning_Eeprom_fault\":\"%c\",\n", warnings->c_str()[17]);     //
+                printf("  \"Warning_Inverter_Over_Current\":\"%c\",\n", warnings->c_str()[18]);     //
+                printf("  \"Warning_Inverter_Soft_Fail\":\"%c\",\n", warnings->c_str()[19]);     //
+                printf("  \"Warning_Self_Test_Fail\":\"%c\",\n", warnings->c_str()[20]);     //
+                printf("  \"Warning_OP_DC_Voltage_Over\":\"%c\",\n", warnings->c_str()[21]);     //
+                printf("  \"Warning_Bat_Open\":\"%c\",\n", warnings->c_str()[22]);     //
+                printf("  \"Warning_Current_Sensor_Fail\":\"%c\",\n", warnings->c_str()[23]);     //
+                printf("  \"Warning_Battery_Short\":\"%c\",\n", warnings->c_str()[24]);     //
+                printf("  \"Warning_Power_limit\":\"%c\",\n", warnings->c_str()[25]);     //
+                printf("  \"Warning_PV_voltage_high\":\"%c\",\n", warnings->c_str()[26]);     //
+                printf("  \"Warning_MPPT_overload_fault\":\"%c\",\n", warnings->c_str()[27]);     //
+                printf("  \"Warning_MPPT_overload_warning\":\"%c\",\n", warnings->c_str()[28]);     //
+                printf("  \"Warning_Battery_too_low_to_charge\":\"%c\",\n", warnings->c_str()[29]);     //
+                printf("  \"Warning_Reserved_a30\":\"%c\",\n", warnings->c_str()[30]);     //
+                printf("  \"Warning_Reserved_a31\":\"%c\",\n", warnings->c_str()[31]);     //
                 printf("}\n");
 
                 // Delete reply string so we can update with new data when polled again...
